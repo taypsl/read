@@ -1,24 +1,38 @@
+body {
+  font-family: "Courier New", Courier, monospace;
+}
 
 .container {
   width: 80%; /* Adjust as needed */
   max-width: 800px; /* Prevents it from getting too wide */
   margin: 8em auto; /* Centers the container */
+  display: grid;
+  justify-items: center;
 }
+
 .text-center {
   text-align: center;
 }
 
 textarea {
-  width: 92%; /* Full width */
-  height: 200px; /* Adjust height as needed */
-  font-size: 48px;
-  line-height: 64px; /* Matches the background lines */
+  font-family: "Courier New", Courier, monospace;
+  width: 100%;
+  max-width: 640px;
+  height: 315px; /* Adjust height as needed */
+  font-size: 90px;
+  line-height: 100px; /* Matches the background lines */
   background: 
     linear-gradient(to right, #ff6961 5px, transparent 5px), /* Red margin */
-    repeating-linear-gradient(white, white 42px, #d3d3d3 44px); /* Notebook lines */
-  padding: 20px 20px 20px 80px; /* Space for text */
+    repeating-linear-gradient(white, white 57px, #d3d3d3 59px); /* Notebook lines */
+  padding: 20px 80px; /* Space for text */
   border: 1px solid #ccc;
-  font-family: "Courier New", Courier, monospace;
   resize: vertical; /* Allow resizing */
   outline: none;
+}
+
+#speakButton {
+  width: 150px; /* Adjust size as needed */
+  cursor: pointer; /* Makes it clear it's clickable */
+  display: inline-block;
+  margin: 1em 50%;
 }

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const inputField = document.getElementById("myInput");
-    const button = document.querySelector("button");
+    const button = document.getElementById("speakButton");
 
     // Enable Enter key to trigger button click when input is focused
     inputField.addEventListener("keypress", function (event) {
@@ -53,12 +53,25 @@ document.addEventListener("DOMContentLoaded", function () {
         speechSynthesis.speak(utterance);
     }
 
+    // Assign button click event
+
     function getText() {
         const inputElement = document.getElementById("myInput");
         const text = inputElement.value;
-        speak(text);
+        speak(text); // Call your existing speak function
+        button.src= "2rrs.gif";
     }
 
-    // Assign button click event
+    // onend = (event) => {
+      
+    // };
+
+
     button.addEventListener("click", getText);
+    speechSynthesis.addEventListener("end", (event) => {
+      console.log(
+        `Utterance has finished being spoken after ${event.elapsedTime} seconds.`,
+      );
+    });
+    // button.addEventListener("click", getText);
 });
