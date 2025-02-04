@@ -35,23 +35,29 @@ document.addEventListener("DOMContentLoaded", function () {
     speechSynthesis.addEventListener("voiceschanged", loadVoices);
 
     function speak(text) {
-        if (voices.length === 0) {
-            console.log("Voices not loaded yet. Trying again...");
-            setTimeout(() => speak(text), 500); // Retry after a short delay
-            return;
-        }
+      if (voices.length === 0) {
+          console.log("Voices not loaded yet. Trying again...");
+          setTimeout(() => speak(text), 500); // Retry after a short delay
+          return;
+      }
 
-        // Create a SpeechSynthesisUtterance
-        const utterance = new SpeechSynthesisUtterance(text);
+      // Create a SpeechSynthesisUtterance
+      const utterance = new SpeechSynthesisUtterance(text);
 
-        // Select a voice safely
-        utterance.voice = voices[23] || voices[0]; // Fallback to first available voice
-        utterance.pitch = 0.6;
-        utterance.rate = 0.9;
+      // Select a voice safely
+      utterance.voice = voices[23] || voices[0]; // Fallback to first available voice
+      utterance.pitch = 0.6;
+      utterance.rate = 0.9;
 
-        // Speak the text
-        speechSynthesis.speak(utterance);
-    }
+      // Attach the 'end' event listener to the utterance
+      utterance.onend = function (event) {
+          // console.log(`Speech finished after ${event.elapsedTime} seconds.`);
+          button.src = "mouth.png"; // Reset GIF after speech ends
+      };
+
+      // Speak the text
+      speechSynthesis.speak(utterance);
+  }
 
     // Assign button click event
 
@@ -68,10 +74,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     button.addEventListener("click", getText);
-    speechSynthesis.addEventListener("end", (event) => {
-      console.log(
-        `Utterance has finished being spoken after ${event.elapsedTime} seconds.`,
-      );
-    });
     // button.addEventListener("click", getText);
 });
