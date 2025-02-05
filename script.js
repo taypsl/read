@@ -48,10 +48,10 @@ document.addEventListener("DOMContentLoaded", function () {
       utterance.voice = voices[23] || voices[0]; // Fallback to first available voice
       utterance.pitch = 0.6;
       utterance.rate = 0.9;
+      utterance.lang = "en-US";
 
       // Attach the 'end' event listener to the utterance
       utterance.onend = function (event) {
-          // console.log(`Speech finished after ${event.elapsedTime} seconds.`);
           button.src = "mouth.png"; // Reset GIF after speech ends
       };
 
